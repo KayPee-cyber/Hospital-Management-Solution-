@@ -15,9 +15,7 @@
         <a class="navbar-brand" href="#">Tranquil Hospital Services</a>
     </nav>
 
-    <!-- <div class='container'>
-        <h1>Hospital Management Solution</h1>
-    </div> -->
+
 </body>
 <form>
     <div class="container">
@@ -49,8 +47,8 @@
                 <input type="text" class="form-control" id="marital-status" placeholder="Marital Status">
             </div>
             <div class="form-group col-md-3">
-                <label for="marital-status">Children</label>
-                <input type="text" class="form-control" id="marital-status" placeholder="Children">
+                <label for="children">Children</label>
+                <input type="text" class="form-control" id="children" placeholder="Children">
             </div>
         </div>
 
@@ -166,6 +164,37 @@
 
         </div>
 </form>
-<div class="container"></div>
+<script>
+    $(document).ready(function() {
+
+        $('form').on('submit', function(e) {
+            e.preventDefault();
+            let name = $('#patients-name').val();
+            let sex = $('#sex').val();
+            let diagnosis = $('#diagnosis').val();
+            let careNote = $('#care-note').val();
+            let ward = $('#ward').val();
+            let bed = $('#bed').val();
+            let doctor = $('#Dr-in-charge').val();
+            let dateOfAdmission = $('#date-of-admission').val();
+            let regNumber = $('#reg-number').val();
+            $.ajax({
+                url: "http://localhost:3000/Patients",
+                success: function(result) {
+                    // $("#div1").html(result);
+                    console.log(result)
+                },
+                method: "POST",
+                data: {
+                    name,
+                    diagnosis,
+                    ward,
+                    bed
+                }
+            });
+        })
+
+    })
+</script>
 
 </html>
