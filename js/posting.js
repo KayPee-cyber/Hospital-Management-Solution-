@@ -81,31 +81,9 @@ $(document).ready(function() {
         });
 
 
-
     });
 
 
-    $('tbody').click(function(e) {
-        $.ajax({
-            type: "GET",
-            dataType: "json",
-            url: "http://localhost:3000/Patients",
-            success: function(data) {
-                console.log('data', data);
-                $(data).each(function(i, patients) {
-                    $('details').append($("<tr>")
-                        .append($('<td>').append(patients.id))
-                        .append($('<td>').append(patients.name))
-                        .append($('<td>').append(patients.ward))
-                        .append($('<td>').append(patients.bed))
-                        .append($('<td>').append(patients.view))
-                        .append($('<td>').append(patients.edit))
-                        .append($('<td>').append(patients.delete)))
-
-                })
-            }
-        })
-    });
 
 
 

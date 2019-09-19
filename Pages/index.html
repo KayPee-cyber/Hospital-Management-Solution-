@@ -43,7 +43,7 @@
 
 </form>
 <script src="/js/jquery-3.4.1.min.js"></script>
-<script src="/js/posting.js"></script>
+<script src="/js/main.js"></script>
 
 <div class="container">
     <a href="http://127.0.0.1:5500/Pages/addPatients.html" class="btn btn-secondary role=" button>Add Patient</a>
@@ -51,7 +51,7 @@
 <div class="container">
     <div class="table-responsive">
 
-        <table id="details" class="table table-hover">
+        <table id="patientssBody" class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">File number</th>
@@ -61,11 +61,9 @@
                     <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col"></th>
-                    <button type="button" class="btn btn-secondary btn-sm">View</button>
-                    <button type="button" class="btn btn-secondary btn-sm">Edit</button>
-                    <button type="button" class="btn btn-secondary btn-sm">Delete</button>
+
                 </tr>
-                <tbody>
+                <tbody id="patientsBody">
 
                 </tbody>
         </table>
