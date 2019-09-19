@@ -18,7 +18,6 @@ $(document).ready(function() {
         let phoneNumber = $('#phone-number').val();
         let personalPhysician = $('#personal-physician').val();
         let physicianNumber = $('#physician-number').val();
-        let regNumber = $('#reg-number').val();
         let ward = $('#ward').val();
         let bed = $('#bed').val();
         let careNote = $('#care-note').val();
@@ -51,7 +50,6 @@ $(document).ready(function() {
             phoneNumber,
             personalPhysician,
             physicianNumber,
-            regNumber,
             ward,
             bed,
             careNote,
@@ -76,59 +74,110 @@ $(document).ready(function() {
             success: function(result) {
                 console.log(result)
             },
-
-
         });
-
-
     });
+    let itemId = sessionStorage.getItem('itemId')
+    $.ajax({
+        url: `http://localhost:3000/Patients/${itemId}`,
+        success: function(response) {
+            console.log(response, itemId);
+            $('tbody').append(`<tr>
+                <td>${response.name}</td>
+            </tr>
+            <tr>
+            <td>File Number</td>
+            <td>${response.id}</td>
+        </tr>
+        <tr>
+            <td>Date of Admission</td>
+            <td>${response.dateOfAdmission}</td>
+        </tr><tr>
+        <td>Date of Birth</td>
+        <td>${response.dateOfBirth}</td>
+    </tr><tr>
+    <td>Sex</td>
+    <td>${response.sex}</td>
+</tr><tr>
+<td>Marital Status</td>
+<td>${response.maritalStatus}</td>
+</tr><tr>
+<td>Children</td>
+<td>${response.children}</td>
+</tr><tr>
+<td>Address</td>
+<td>${response.address}</td>
+</tr><tr>
+<td>Occupation</td>
+<td>${response.occupation}</td>
+</tr><tr>
+<td>Nationality</td>
+<td>${response.nationality}</td>
+</tr><tr>
+<td>Religion</td>
+<td>${response.religion}</td>
+</tr><tr>
+<td>Next of Kin</td>
+<td>${response.nextOfKin}</td>
+</tr><tr>
+<td>Phone Number</td>
+<td>${response.phoneNumber}</td>
+</tr><tr>
+<td>Personal Physician</td>
+<td>${response.personalPhysician}</td>
+</tr><tr>
+<td>Personal Physician's Phone Number</td>
+<td>${response.physicianNumber}</td>
+</tr><tr>
+<td>Ward</td>
+<td>${response.ward}</td>
+</tr><tr>
+<td>Bed</td>
+<td>${response.bed}</td>
+</tr><tr>
+<td>Care-Note</td>
+<td>${response.careNote}</td>
+</tr><tr>
+<td>Dr. in Charge</td>
+<td>${response.drInCharge}</td>
+</tr><tr>
+<td>Diagnosis</td>
+<td>${response.diagnosis}</td>
+</tr><tr>
+<td>Pulse</td>
+<td>${response.pulse}</td>
+</tr><tr>
+<td>Blood Pressure</td>
+<td>${response.bloodPressure}</td>
+</tr><tr>
+<td>Respiration</td>
+<td>${response.respiration}</td>
+</tr><tr>
+<td>Temperature</td>
+<td>${response.temperature}</td>
+</tr><tr>
+<td>Mental State on Admission</td>
+<td>${response.mental}</td>
+</tr><tr>
+<td>Supposed Causes/Predisposing</td>
+<td>${response.predisposing}</td>
+</tr><tr>
+<td>Physical Condition</td>
+<td>${response.physical}</td>
+</tr><tr>
+<td>Special Circumstances</td>
+<td>${response.special}</td>
+</tr><tr>
+<td>Date of Previous Admissions</td>
+<td>${response.previousAdmissions}</td>
+</tr><tr>
+<td>Date of Previous Discharges</td>
+<td>${response.previousDischarges}</td>
+</tr>`)
 
+        },
+        method: 'GET'
+    })
 
+    //  let itemId = sessionStorage.getItem('itemId')
 
-
-
-    // $('button').click(function(e) {
-    //     $.ajax({
-    //         type: "GET",
-    //         dataType: "json",
-    //         url: "http://localhost:3000/Patients",
-    //         success: function(data) {
-    //             // console.log('data', data);
-    //             $(data).each(function(i, patients) {
-    //                 $('details').append($("<tr>")
-    //                     .append($('<td>').append(patients.id))
-    //                     .append($('<td>').append(patients.name))
-    //                     .append($('<td>').append(patients.dateOfAdmission))
-    //                     .append($('<td>').append(patients.sex))
-    //                     .append($('<td>').append(patients.maritalStatus))
-    //                     .append($('<td>').append(patients.children))
-    //                     .append($('<td>').append(patients.address))
-    //                     .append($('<td>').append(patients.occupation))
-    //                     .append($('<td>').append(patients.nationality))
-    //                     .append($('<td>').append(patients.religion))
-    //                     .append($('<td>').append(patients.nextOfKin))
-    //                     .append($('<td>').append(patients.phoneNumber))
-    //                     .append($('<td>').append(patients.personalPhysician))
-    //                     .append($('<td>').append(patients.physicianNumber))
-    //                     .append($('<td>').append(patients.regNumber))
-    //                     .append($('<td>').append(patients.ward))
-    //                     .append($('<td>').append(patients.bed))
-    //                     .append($('<td>').append(patients.careNote))
-    //                     .append($('<td>').append(patients.drInCharge))
-    //                     .append($('<td>').append(patients.diagnosis))
-    //                     .append($('<td>').append(patients.pulse))
-    //                     .append($('<td>').append(patients.bloodPressure))
-    //                     .append($('<td>').append(patients.respiration))
-    //                     .append($('<td>').append(patients.temperature))
-    //                     .append($('<td>').append(patients.mental))
-    //                     .append($('<td>').append(patients.predisposing))
-    //                     .append($('<td>').append(patients.physical))
-    //                     .append($('<td>').append(patients.special))
-    //                     .append($('<td>').append(patients.previousAdmissions))
-    //                     .append($('<td>').append(patients.previousDischarges)))
-    //             })
-    //         }
-    //     })
-    // });
-
-});
+})
