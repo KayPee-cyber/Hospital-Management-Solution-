@@ -35,9 +35,6 @@ $(document).ready(function() {
         let previousAdmissions = $('#previous-admissions').val();
         let previousDischarges = $('#previous-discharges').val();
 
-
-
-
         let details = {
             id,
             name,
@@ -82,6 +79,78 @@ $(document).ready(function() {
 
 
         });
-    })
 
-})
+
+
+    });
+
+
+    $('tbody').click(function(e) {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "http://localhost:3000/Patients",
+            success: function(data) {
+                console.log('data', data);
+                $(data).each(function(i, patients) {
+                    $('details').append($("<tr>")
+                        .append($('<td>').append(patients.id))
+                        .append($('<td>').append(patients.name))
+                        .append($('<td>').append(patients.ward))
+                        .append($('<td>').append(patients.bed))
+                        .append($('<td>').append(patients.view))
+                        .append($('<td>').append(patients.edit))
+                        .append($('<td>').append(patients.delete)))
+
+                })
+            }
+        })
+    });
+
+
+
+    // $('button').click(function(e) {
+    //     $.ajax({
+    //         type: "GET",
+    //         dataType: "json",
+    //         url: "http://localhost:3000/Patients",
+    //         success: function(data) {
+    //             // console.log('data', data);
+    //             $(data).each(function(i, patients) {
+    //                 $('details').append($("<tr>")
+    //                     .append($('<td>').append(patients.id))
+    //                     .append($('<td>').append(patients.name))
+    //                     .append($('<td>').append(patients.dateOfAdmission))
+    //                     .append($('<td>').append(patients.sex))
+    //                     .append($('<td>').append(patients.maritalStatus))
+    //                     .append($('<td>').append(patients.children))
+    //                     .append($('<td>').append(patients.address))
+    //                     .append($('<td>').append(patients.occupation))
+    //                     .append($('<td>').append(patients.nationality))
+    //                     .append($('<td>').append(patients.religion))
+    //                     .append($('<td>').append(patients.nextOfKin))
+    //                     .append($('<td>').append(patients.phoneNumber))
+    //                     .append($('<td>').append(patients.personalPhysician))
+    //                     .append($('<td>').append(patients.physicianNumber))
+    //                     .append($('<td>').append(patients.regNumber))
+    //                     .append($('<td>').append(patients.ward))
+    //                     .append($('<td>').append(patients.bed))
+    //                     .append($('<td>').append(patients.careNote))
+    //                     .append($('<td>').append(patients.drInCharge))
+    //                     .append($('<td>').append(patients.diagnosis))
+    //                     .append($('<td>').append(patients.pulse))
+    //                     .append($('<td>').append(patients.bloodPressure))
+    //                     .append($('<td>').append(patients.respiration))
+    //                     .append($('<td>').append(patients.temperature))
+    //                     .append($('<td>').append(patients.mental))
+    //                     .append($('<td>').append(patients.predisposing))
+    //                     .append($('<td>').append(patients.physical))
+    //                     .append($('<td>').append(patients.special))
+    //                     .append($('<td>').append(patients.previousAdmissions))
+    //                     .append($('<td>').append(patients.previousDischarges)))
+    //             })
+    //         }
+    //     })
+    // });
+
+});
